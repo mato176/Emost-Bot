@@ -1,10 +1,13 @@
-const {createCommand} = require('../../util.js');
+const {createCommand} = require('../util.js');
+const {createDisconnectMessage} = require('../../message_creator');
 
 module.exports = createCommand('disconnect',
     'disconnect from author\'s voice channel',
     async message =>
     {
         const serverInfo = message.client.voiceConnections.get(message.guild.id);
+
+        serverInfo.textChannel.send(createDisconnectMessage());
 
         // leave the server
         await serverInfo.connection.disconnect();

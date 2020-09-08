@@ -1,4 +1,4 @@
-const {createCommand} = require('../../util');
+const {createCommand} = require('../util');
 
 module.exports = createCommand(
     'skip',
@@ -6,7 +6,6 @@ module.exports = createCommand(
     (client, guild, args) =>
     {
         console.log(`Guild ${guild.id}: Skipping Song`);
-        client.voiceCommands.get('pause').execute(client, guild, args);
         const serverInfo = client.voiceConnections.get(guild.id);
         serverInfo.dispatcher.emit('finish');
     }

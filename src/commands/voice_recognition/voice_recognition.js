@@ -3,7 +3,7 @@ const Bumblebee = require("bumblebee-hotword-node");
 const client = new speech.SpeechClient();
 
 // TODO maybe use single_utterance for shorter queries but will require two hotwords
-class VoiceRecognitionService
+class Voice_recognition
 {
     constructor(hotword, connection, voiceReceiverStream)
     {
@@ -90,7 +90,7 @@ class VoiceRecognitionService
         const client = this._connection.client;
         const stuff = client.voiceConnections.get(this._connection.channel.guild.id);
 
-        stuff.textChannel.send(`<@${stuff.listeningTo.id}> said: \"${(transcribed) ? transcribed : "..."}\"`);
+        stuff.textChannel.send(`I heard *${(transcribed) ? transcribed : "..."}*`);
         let arrayed_transcribed = transcribed.split(" ");
         const stringCommand = arrayed_transcribed.shift().toLowerCase();
         const command = client.voiceCommands.get(stringCommand);
@@ -110,4 +110,4 @@ class VoiceRecognitionService
     }
 }
 
-module.exports = {VoiceRecognitionService};
+module.exports = {VoiceRecognitionService: Voice_recognition};
