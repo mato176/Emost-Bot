@@ -61,7 +61,7 @@ module.exports = createCommand("connect",
         {
             console.log("Voice Recognition Error");
             console.error(error);
-            message.channel.send('Error in Voice Recognition Service, try again.');
+            message.channel.send(`:exclamation: <@${message.member.id}>: Error in Voice Recognition Service, try !connect until it works. :exclamation:`);
             connection.disconnect();
         }
     });

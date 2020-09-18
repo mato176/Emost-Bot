@@ -18,13 +18,13 @@ client.voiceConnections = new Discord.Collection();
 // add text commands
 for (const file of textCommandFiles) {
     const command = require(`./commands/text_commands/${file}`);
-    client.textCommands.set(command.name, command)
+    client.textCommands.set(command.name, command);
 }
 
 // add voice commands
 for (const file of voiceCommandFiles) {
     const command = require(`./commands/voice_commands/${file}`);
-    client.voiceCommands.set(command.name, command)
+    client.voiceCommands.set(command.name, command);
 }
 
 // Check if token was obtained correctly.
@@ -33,6 +33,7 @@ if (env.error) throw env.error;
 client.once('ready', () => {
     // TODO when you disconnect and reconnect, how to readd servers?
     console.log('Voice Recognition Bot is Online');
+
 });
 
 client.on('error', (error) => console.error(error));
